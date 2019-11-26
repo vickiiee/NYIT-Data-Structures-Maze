@@ -20,13 +20,26 @@ public class Maze {
 		Maze maze = new Maze();
 		maze.readFile();
 		maze.findLocations();
+		
+		maze.getQueue().displayQueue();
+	}
+
+	public LocationQueue getQueue() {
+		return queue;
+	}
+
+	public void setQueue(LocationQueue queue) {
+		this.queue = queue;
 	}
 
 	private void findLocations() {
 		for(int i = 0; i < mazeArr.length; i ++) {
 			for(int j = 0; j < mazeArr[i].length; j++) {
+				
 				if(mazeArr[i][j] == ' ') {
-					queue.insertLast(new Location(i, j));
+					System.out.println(mazeArr[i][j]);
+					Location p = new Location(i, j);
+					queue.insertLast(p);
 				}
 			}
 		}

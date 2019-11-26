@@ -4,6 +4,7 @@ public class Location {
 
 	private Location next; 
 	private Location previous;
+	
 	public Location(int row, int col) {
 		this.rowLocation = row;
 		this.colLocation = col;
