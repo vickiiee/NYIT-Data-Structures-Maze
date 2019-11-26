@@ -9,6 +9,8 @@ public class Maze {
 	private String userInput;
 
 	private char[][] mazeArr;
+	
+	private LocationQueue queue; 
 
 	public Maze() {
 		// TODO Auto-generated constructor stub
@@ -17,6 +19,18 @@ public class Maze {
 	public static void main(String[] args) {
 		Maze maze = new Maze();
 		maze.readFile();
+		maze.findLocations();
+	}
+
+	private void findLocations() {
+		for(int i = 0; i < mazeArr.length; i ++) {
+			for(int j = 0; j < mazeArr[i].length; j++) {
+				if(mazeArr[i][j] == ' ') {
+					queue.insertLast(new Location(i, j));
+				}
+			}
+		}
+		
 	}
 
 	public void readFile() {
