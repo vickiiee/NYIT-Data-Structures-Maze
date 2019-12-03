@@ -21,7 +21,10 @@ public class Maze {
 		maze.readFile();
 		maze.findLocations();
 		
-		//maze.getQueue().displayQueue();
+		//testing
+		maze.getQueue().displayQueue();
+		
+		maze.findRoute();
 	}
 
 	public LocationQueue getQueue() {
@@ -43,7 +46,6 @@ public class Maze {
 				}
 			}
 		}
-		
 	}
 
 	public void readFile() {
@@ -96,5 +98,9 @@ public class Maze {
 			}
 			System.out.println("");
 		}
+	}
+	
+	public void findRoute() {
+		
 	}
 }
