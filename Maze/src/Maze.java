@@ -10,7 +10,9 @@ public class Maze {
 
 	private char[][] mazeArr;
 	
-	private LocationQueue queue; 
+	private LocationQueue queue;
+	private int endCol;
+	private int endRow; 
 
 	public Maze() {
 		queue = new LocationQueue();
@@ -66,8 +68,8 @@ public class Maze {
 		int cols = inputFile.nextInt();
 		int startRow = inputFile.nextInt();
 		int startCol = inputFile.nextInt();
-		int endRow = inputFile.nextInt();
-		int endCol = inputFile.nextInt();
+		endRow = inputFile.nextInt();
+		endCol = inputFile.nextInt();
 		
 		Location start = new Location(startRow, startCol);
 		queue.insertLast(start);
@@ -143,5 +145,13 @@ public class Maze {
 	
 	public char[][] getMazeArr(){
 		return mazeArr;
+	}
+
+	public int getEndCol() {
+		return endCol;
+	}
+
+	public int getEndRow() {
+		return endRow;
 	}
 }

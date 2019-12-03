@@ -52,4 +52,20 @@ public class LocationQueue {
 	public boolean isEmpty() {
 		return first == null; 
 	}
+	
+	public void findRoute(int endRow, int endCol) {
+		Location current = first;
+		while(current != null) {
+			//if current location/coordinate is end, you found the end
+			if(current.getRowLocation() == endRow && current.getColLocation() == endCol) {
+				System.out.println("You did it! You found the end!");
+				break;
+			}else {
+				//add possible next coordinates from current
+				
+				current = current.getNext();
+			}
+			
+		}
+	}
 }
