@@ -65,6 +65,7 @@ public class LocationQueue {
 			deleteFirst();
 			if(current.getRowLocation() == m.getEndRow() && current.getColLocation() == m.getEndCol()) {
 				System.out.println("You did it! You found the end!");
+				
 				break;
 			}else {
 				//add possible next coordinates from current

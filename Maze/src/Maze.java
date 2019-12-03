@@ -27,8 +27,8 @@ public class Maze {
 		//testing
 		maze.getQueue().displayQueue();
 		maze.getQueue().findRoute();
-
-		//maze.findRoute()
+		maze.printArray();
+		maze.findRoute();
 	}
 
 	public LocationQueue getQueue() {
@@ -96,16 +96,21 @@ public class Maze {
 		}
 		inputFile.close();
 
-		//print out 2dArr
-		System.out.println("\n");
-		for(int i= 0; i < rows; i++) {
-			for(int j = 0; j < cols; j++) {
-				System.out.print(mazeArr[i][j]);
-			}
-			System.out.println("");
-		}
+		printArray();
 	}
 	
+	public void printArray() {
+		//print out 2dArr
+				System.out.println("\n");
+				for(int i= 0; i < mazeArr.length; i++) {
+					for(int j = 0; j < mazeArr[0].length; j++) {
+						System.out.print(mazeArr[i][j]);
+					}
+					System.out.println("");
+				}
+		
+	}
+
 	public void findRoute() {
 		//testing
 		for(int i = 0; i < mazeArr.length;i++) {
