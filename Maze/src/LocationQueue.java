@@ -53,15 +53,46 @@ public class LocationQueue {
 		return first == null; 
 	}
 	
-	public void findRoute(int endRow, int endCol) {
+	public void findRoute(int endRow, int endCol, char[][] mazeArr) {
 		Location current = first;
 		while(current != null) {
 			//if current location/coordinate is end, you found the end
+			
+			mazeArr[current.getRowLocation()][current.getColLocation()] = '.';
+			deleteFirst();
 			if(current.getRowLocation() == endRow && current.getColLocation() == endCol) {
 				System.out.println("You did it! You found the end!");
 				break;
 			}else {
 				//add possible next coordinates from current
+				
+				//check top
+				if(current.getRowLocation()!= 0) {
+					if(mazeArr[current.getRowLocation()-1][current.getColLocation()] == ' ') {
+						insertLast(new Location(current.getRowLocation()-1, current.getColLocation()));
+					}
+				}
+
+//----->		//check bottom
+				if(current.getRowLocation()!= mazeArr.length-1) {
+					if(mazeArr[current.getRowLocation()+1][current.getColLocation()] == ' ') {
+						insertLast(new Location(current.getRowLocation()+1, current.getColLocation()));
+					}
+				}
+				
+				//check left
+				if(current.getColLocation()!= 0) {
+					if(mazeArr[current.getRowLocation()][current.getColLocation()-1] == ' ') {
+						insertLast(new Location(current.getRowLocation(), current.getColLocation()-1));
+					}
+				}
+				
+				//check right
+				if(current.getColLocation()!= mazeArr[0].length-1) {
+					if(mazeArr[current.getRowLocation()][current.getColLocation()+1] == ' ') {
+						insertLast(new Location(current.getRowLocation(), current.getColLocation()+1));
+					}
+				}
 				
 				current = current.getNext();
 			}
