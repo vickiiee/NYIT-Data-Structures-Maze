@@ -19,7 +19,7 @@ public class Maze {
 	public static void main(String[] args) {
 		Maze maze = new Maze();
 		maze.readFile();
-		maze.findLocations();
+		//maze.findLocations();
 		
 		//testing
 		maze.getQueue().displayQueue();
@@ -69,6 +69,8 @@ public class Maze {
 		int endRow = inputFile.nextInt();
 		int endCol = inputFile.nextInt();
 		
+		Location start = new Location(startRow, startCol);
+		queue.insertLast(start);
 		//initialize char array:
 		mazeArr = new char[rows][cols];
 		
@@ -128,6 +130,7 @@ public class Maze {
 			}System.out.println("");
 		}
 		
+		
 		//queue.findRoute();
 		/*while( current != null)
 		 * Location current = first;
@@ -136,5 +139,9 @@ public class Maze {
 		 * 
 		 */
 		//markPath(coordinates);
+	}
+	
+	public char[][] getMazeArr(){
+		return mazeArr;
 	}
 }
