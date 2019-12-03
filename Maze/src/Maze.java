@@ -13,7 +13,7 @@ public class Maze {
 	private LocationQueue queue; 
 
 	public Maze() {
-		// TODO Auto-generated constructor stub
+		queue = new LocationQueue();
 	}
 
 	public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class Maze {
 		maze.readFile();
 		maze.findLocations();
 		
-		maze.getQueue().displayQueue();
+		//maze.getQueue().displayQueue();
 	}
 
 	public LocationQueue getQueue() {
@@ -37,7 +37,7 @@ public class Maze {
 			for(int j = 0; j < mazeArr[i].length; j++) {
 				
 				if(mazeArr[i][j] == ' ') {
-					System.out.println(mazeArr[i][j]);
+					//System.out.println(mazeArr[i][j]);
 					Location p = new Location(i, j);
 					queue.insertLast(p);
 				}
