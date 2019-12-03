@@ -37,7 +37,7 @@ public class Maze {
 		this.queue = queue;
 	}
 
-	private void findLocations() {
+	public void findLocations() {
 		for(int i = 0; i < mazeArr.length; i ++) {
 			for(int j = 0; j < mazeArr[i].length; j++) {
 				
