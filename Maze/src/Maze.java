@@ -8,11 +8,11 @@ public class Maze {
 
 	private String userInput;
 
-	private char[][] mazeArr;
+	private static char[][] mazeArr;
 	
 	private LocationQueue queue;
-	private int endCol;
-	private int endRow; 
+	private static int endCol;
+	private static int endRow; 
 
 	public Maze() {
 		queue = new LocationQueue();
@@ -20,13 +20,15 @@ public class Maze {
 
 	public static void main(String[] args) {
 		Maze maze = new Maze();
+		maze.getQueue().getMazeClass(maze);
 		maze.readFile();
 		//maze.findLocations();
 		
 		//testing
 		maze.getQueue().displayQueue();
-		
-		maze.findRoute();
+		maze.getQueue().findRoute();
+
+		//maze.findRoute()
 	}
 
 	public LocationQueue getQueue() {

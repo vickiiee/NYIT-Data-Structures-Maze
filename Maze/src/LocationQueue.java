@@ -3,6 +3,8 @@ public class LocationQueue {
 	private Location first; 
 	private Location last; 
 	
+	private Maze m;
+	
 	public LocationQueue() {
 		first = null; 
 		last = null; 
@@ -11,6 +13,7 @@ public class LocationQueue {
 	public void insertLast(Location data) { //insert last
 		if(first == null ) {
 			first = data; 
+			last = data;
 		}else{
 			last.setNext(data);
 			data.setPrevious(last);
@@ -53,14 +56,14 @@ public class LocationQueue {
 		return first == null; 
 	}
 	
-	public void findRoute(int endRow, int endCol, char[][] mazeArr) {
+	public void findRoute() {//int endRow, int endCol, char[][] mazeArr
 		Location current = first;
 		while(current != null) {
 			//if current location/coordinate is end, you found the end
 			
-			mazeArr[current.getRowLocation()][current.getColLocation()] = '.';
+			m.getMazeArr()[current.getRowLocation()][current.getColLocation()] = '.';
 			deleteFirst();
-			if(current.getRowLocation() == endRow && current.getColLocation() == endCol) {
+			if(current.getRowLocation() == m.getEndRow() && current.getColLocation() == m.getEndCol()) {
 				System.out.println("You did it! You found the end!");
 				break;
 			}else {
@@ -68,29 +71,30 @@ public class LocationQueue {
 				
 				//check top
 				if(current.getRowLocation()!= 0) {
-					if(mazeArr[current.getRowLocation()-1][current.getColLocation()] == ' ') {
+					if(m.getMazeArr()[current.getRowLocation()-1][current.getColLocation()] == ' ') {
 						insertLast(new Location(current.getRowLocation()-1, current.getColLocation()));
 					}
 				}
 
 //----->		//check bottom
-				if(current.getRowLocation()!= mazeArr.length-1) {
-					if(mazeArr[current.getRowLocation()+1][current.getColLocation()] == ' ') {
+				if(current.getRowLocation()!= m.getMazeArr().length-1) {
+					if(m.getMazeArr()[current.getRowLocation()+1][current.getColLocation()] == ' ') {
 						insertLast(new Location(current.getRowLocation()+1, current.getColLocation()));
 					}
 				}
 				
 				//check left
 				if(current.getColLocation()!= 0) {
-					if(mazeArr[current.getRowLocation()][current.getColLocation()-1] == ' ') {
+					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()-1] == ' ') {
 						insertLast(new Location(current.getRowLocation(), current.getColLocation()-1));
 					}
 				}
 				
 				//check right
-				if(current.getColLocation()!= mazeArr[0].length-1) {
-					if(mazeArr[current.getRowLocation()][current.getColLocation()+1] == ' ') {
-						insertLast(new Location(current.getRowLocation(), current.getColLocation()+1));
+				if(current.getColLocation()!= m.getMazeArr()[0].length-1) {
+					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()+1] == ' ') {
+						Location k =new Location(current.getRowLocation(), current.getColLocation()+1);
+						insertLast(k);
 					}
 				}
 				
@@ -98,5 +102,9 @@ public class LocationQueue {
 			}
 			
 		}
+	}
+	
+	public void getMazeClass(Maze maze) {
+		m = maze;
 	}
 }
