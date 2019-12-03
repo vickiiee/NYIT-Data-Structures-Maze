@@ -101,6 +101,40 @@ public class Maze {
 	}
 	
 	public void findRoute() {
+		//testing
+		for(int i = 0; i < mazeArr.length;i++) {
+			for(int j = 0; j < mazeArr[0].length; j++) {
+				if(mazeArr[i][j] == ' ') {
+					if(i <10) {
+						System.out.print("("+i+" ,");
+						if(j<10) {
+							System.out.print(j+" )");
+						}else {
+							System.out.print(j+ ")");
+						}
+						
+					}else {
+						System.out.print("("+i+",");
+						if(j<10) {
+							System.out.print(j+" )");
+						}else {
+							System.out.print(j+ ")");
+						}
+					}
+					
+				}else {
+					System.out.print("(     )");
+				}
+			}System.out.println("");
+		}
 		
+		//queue.findRoute();
+		/*while( current != null)
+		 * Location current = first;
+		 * 	//queue at start should onnly have one location! the start point
+		 *  //check 
+		 * 
+		 */
+		//markPath(coordinates);
 	}
 }
