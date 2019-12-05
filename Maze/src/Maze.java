@@ -26,10 +26,11 @@ public class Maze {
 
 		// testing
 		maze.getQueue().displayQueue();
-		maze.findRoute();
+		maze.printRoute();
 		maze.getQueue().findRouteRecursion(queue.getFirst());
+		//maze.getQueue().findRouteQ(queue.getFirst());
 		maze.printArray();
-		maze.findRoute();
+		maze.printRoute();
 		maze.getQueue().displayQueue();
 	}
 
@@ -113,7 +114,7 @@ public class Maze {
 
 	}
 
-	public void findRoute() {
+	public void printRoute() {
 		// testing
 		for (int i = 0; i < mazeArr.length; i++) {
 			for (int j = 0; j < mazeArr[0].length; j++) {
@@ -151,6 +152,14 @@ public class Maze {
 		 * 
 		 */
 		// markPath(coordinates);
+	}
+	
+	public void findRoute() {//bfs
+		findVertex();
+	}
+
+	public void findVertex() {
+		
 	}
 
 	public char[][] getMazeArr() {
