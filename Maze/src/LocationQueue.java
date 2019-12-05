@@ -75,7 +75,7 @@ public class LocationQueue {
 				if(current.getRowLocation()!= 0) {
 					if(m.getMazeArr()[current.getRowLocation()-1][current.getColLocation()] == ' ') {
 						insertLast(new Location(current.getRowLocation()-1, current.getColLocation()));
-						
+						deleteFirst();
 						//delete first?
 						//method with ^location as parameter and make possibly 2 booleans: visted and in queue so no repeated location classes in it... mayb not need this bcuz visited space will already b marked with '.'
 					}
@@ -85,6 +85,7 @@ public class LocationQueue {
 				if(current.getRowLocation()!= m.getMazeArr().length-1) {
 					if(m.getMazeArr()[current.getRowLocation()+1][current.getColLocation()] == ' ') {
 						insertLast(new Location(current.getRowLocation()+1, current.getColLocation()));
+						deleteFirst();
 					}
 				}
 				
@@ -92,6 +93,7 @@ public class LocationQueue {
 				if(current.getColLocation()!= 0) {
 					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()-1] == ' ') {
 						insertLast(new Location(current.getRowLocation(), current.getColLocation()-1));
+						deleteFirst();
 					}
 				}
 				
@@ -100,6 +102,7 @@ public class LocationQueue {
 					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()+1] == ' ') {
 						Location k =new Location(current.getRowLocation(), current.getColLocation()+1);
 						insertLast(k);
+						deleteFirst();
 					}
 				}
 				
