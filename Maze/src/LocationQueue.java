@@ -1,3 +1,5 @@
+//Author:Vickie Wu and Rosenaldie Beauvais
+
 public class LocationQueue {
 
 	private Location first; 

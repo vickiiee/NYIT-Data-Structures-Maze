@@ -1,3 +1,5 @@
+//Author: Vickie Wu and Rosenaldie Beauvais
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

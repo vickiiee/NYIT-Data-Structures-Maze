@@ -1,3 +1,5 @@
+//Author: Vickie Wu and Rosenaldie Beauvais
+
 public class Location {
 	private int rowLocation;
 	private int colLocation;
