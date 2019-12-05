@@ -9,10 +9,10 @@ public class Maze {
 	private String userInput;
 
 	private static char[][] mazeArr;
-	
+
 	private LocationQueue queue;
 	private static int endCol;
-	private static int endRow; 
+	private static int endRow;
 
 	public Maze() {
 		queue = new LocationQueue();
@@ -22,13 +22,14 @@ public class Maze {
 		Maze maze = new Maze();
 		maze.getQueue().getMazeClass(maze);
 		maze.readFile();
-		//maze.findLocations();
-		
-		//testing
+		// maze.findLocations();
+
+		// testing
 		maze.getQueue().displayQueue();
 		maze.getQueue().findRoute();
 		maze.printArray();
 		maze.findRoute();
+		maze.getQueue().displayQueue();
 	}
 
 	public LocationQueue getQueue() {
@@ -40,11 +41,11 @@ public class Maze {
 	}
 
 	public void findLocations() {
-		for(int i = 0; i < mazeArr.length; i ++) {
-			for(int j = 0; j < mazeArr[i].length; j++) {
-				
-				if(mazeArr[i][j] == ' ') {
-					//System.out.println(mazeArr[i][j]);
+		for (int i = 0; i < mazeArr.length; i++) {
+			for (int j = 0; j < mazeArr[i].length; j++) {
+
+				if (mazeArr[i][j] == ' ') {
+					// System.out.println(mazeArr[i][j]);
 					Location p = new Location(i, j);
 					queue.insertLast(p);
 				}
@@ -72,85 +73,86 @@ public class Maze {
 		int startCol = inputFile.nextInt();
 		endRow = inputFile.nextInt();
 		endCol = inputFile.nextInt();
-		
+
 		Location start = new Location(startRow, startCol);
 		queue.insertLast(start);
-		//initialize char array:
+		// initialize char array:
 		mazeArr = new char[rows][cols];
-		
+
 		// Read lines from the file until no more are left.
 		int row = 0;
 		inputFile.nextLine();
 		while (inputFile.hasNextLine()) {
 			// Read the next name.
 			String line = inputFile.nextLine();
-			for(int i = 0; i < cols; i++) {
+			for (int i = 0; i < cols; i++) {
 				mazeArr[row][i] = line.charAt(i);
 			}
-			
+
 			// Display the last name read.
 			System.out.println(line);
-			//System.out.println(line.length());
+			// System.out.println(line.length());
 			row++;
-			
+
 		}
 		inputFile.close();
 
 		printArray();
 	}
-	
+
 	public void printArray() {
-		//print out 2dArr
-				System.out.println("\n");
-				for(int i= 0; i < mazeArr.length; i++) {
-					for(int j = 0; j < mazeArr[0].length; j++) {
-						System.out.print(mazeArr[i][j]);
-					}
-					System.out.println("");
-				}
-		
+		// print out 2dArr
+		System.out.println("\n");
+		for (int i = 0; i < mazeArr.length; i++) {
+			for (int j = 0; j < mazeArr[0].length; j++) {
+				System.out.print(mazeArr[i][j]);
+			}
+			System.out.println("");
+		}
+
 	}
 
 	public void findRoute() {
-		//testing
-		for(int i = 0; i < mazeArr.length;i++) {
-			for(int j = 0; j < mazeArr[0].length; j++) {
-				if(mazeArr[i][j] == ' ') {
-					if(i <10) {
-						System.out.print("("+i+" ,");
-						if(j<10) {
-							System.out.print(j+" )");
-						}else {
-							System.out.print(j+ ")");
+		// testing
+		for (int i = 0; i < mazeArr.length; i++) {
+			for (int j = 0; j < mazeArr[0].length; j++) {
+				if (mazeArr[i][j] == ' ') {
+					if (i < 10) {
+						System.out.print("(" + i + " ,");
+						if (j < 10) {
+							System.out.print(j + " )");
+						} else {
+							System.out.print(j + ")");
 						}
-						
-					}else {
-						System.out.print("("+i+",");
-						if(j<10) {
-							System.out.print(j+" )");
-						}else {
-							System.out.print(j+ ")");
+
+					} else {
+						System.out.print("(" + i + ",");
+						if (j < 10) {
+							System.out.print(j + " )");
+						} else {
+							System.out.print(j + ")");
 						}
 					}
-					
-				}else {
+
+				} else if (mazeArr[i][j] == '.') {
+					System.out.print("(.....)");
+				} else {
 					System.out.print("(     )");
 				}
-			}System.out.println("");
+			}
+			System.out.println("");
 		}
-		
-		
-		//queue.findRoute();
-		/*while( current != null)
-		 * Location current = first;
-		 * 	//queue at start should onnly have one location! the start point
-		 *  //check 
+
+		// queue.findRoute();
+		/*
+		 * while( current != null) Location current = first; //queue at start should
+		 * onnly have one location! the start point //check
 		 * 
 		 */
-		//markPath(coordinates);
+		// markPath(coordinates);
 	}
-	
-	public char[][] getMazeArr(){
+
+	public char[][] getMazeArr() {
 		return mazeArr;
 	}
 
