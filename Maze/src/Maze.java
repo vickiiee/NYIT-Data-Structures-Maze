@@ -10,7 +10,7 @@ public class Maze {
 
 	private static char[][] mazeArr;
 
-	private LocationQueue queue;
+	private static LocationQueue queue;
 	private static int endCol;
 	private static int endRow;
 
@@ -26,7 +26,7 @@ public class Maze {
 
 		// testing
 		maze.getQueue().displayQueue();
-		maze.getQueue().findRoute();
+		maze.getQueue().findRouteRecursion(queue.getFirst());
 		maze.printArray();
 		maze.findRoute();
 		maze.getQueue().displayQueue();
