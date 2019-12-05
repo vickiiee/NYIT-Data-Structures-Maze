@@ -31,8 +31,8 @@ public class Maze {
 		//maze.findVertex();
 		
 		maze.printRoute();
-		//maze.getQueue().findRouteRecursion(queue.getFirst());
-		maze.getQueue().findRouteQ(queue.getFirst());
+		maze.getQueue().findRouteRecursion(queue.getFirst());
+		//maze.getQueue().findRouteQ(queue.getFirst());
 		maze.printArray();
 		maze.printRoute();
 		maze.getQueue().displayQueue();
