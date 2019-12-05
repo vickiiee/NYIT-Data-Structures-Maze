@@ -127,7 +127,7 @@ public class LocationQueue {
 		//while(current != null) {
 			//-if current location/coordinate is end, you found the end
 			System.out.println("Current location: "+ current.getRowLocation()+","+current.getColLocation() +"\n endrow: "+ m.getEndRow()+ ", end col:" + m.getEndCol());
-			m.getMazeArr()[current.getRowLocation()][current.getColLocation()] = '+';
+			m.getMazeArr()[current.getRowLocation()][current.getColLocation()] = '.';
 			//deleteFirst();
 			if(current.getRowLocation() == m.getEndRow() && current.getColLocation() == m.getEndCol()) {
 				System.out.println("--------------------------------You did it! You found the end!--------------------------------------------------");
@@ -200,20 +200,21 @@ public class LocationQueue {
 		//-RECURSION; no while loop just dequeue and make parameter the  location class
 		//Location current = first;
 		while(current != null) {
+			current.setVisit(true);
 			//-if current location/coordinate is end, you found the end
 			System.out.println("Current location: "+ current.getRowLocation()+","+current.getColLocation() +"\n endrow: "+ m.getEndRow()+ ", end col:" + m.getEndCol());
-			m.getMazeArr()[current.getRowLocation()][current.getColLocation()] = '+';
+			m.getMazeArr()[current.getRowLocation()][current.getColLocation()] = '.';
 			//deleteFirst();
 			if(current.getRowLocation() == m.getEndRow() && current.getColLocation() == m.getEndCol()) {
 				System.out.println("--------------------------------You did it! You found the end!--------------------------------------------------");
-				stop = true;
+				//stop = true; //recursion only
 				break;
 				//return "You did it! You found the end!";
 			}else {
 				//add possible next coordinates from current
 				
 				//check top
-				if(current.getRowLocation()!= 0 && stop == false) {
+				if(current.getRowLocation()!= 0) {
 					if(m.getMazeArr()[current.getRowLocation()-1][current.getColLocation()] == ' ') {
 						System.out.println("	top");
 						Location k =new Location(current.getRowLocation()-1, current.getColLocation());
@@ -226,7 +227,7 @@ public class LocationQueue {
 				}
 
 				//check right
-				if(current.getColLocation()!= m.getMazeArr()[0].length-1 && stop == false) {
+				if(current.getColLocation()!= m.getMazeArr()[0].length-1) {
 					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()+1] == ' ') {
 						System.out.println("	right");
 						Location k =new Location(current.getRowLocation(), current.getColLocation()+1);
@@ -238,7 +239,7 @@ public class LocationQueue {
 				}
 				
 //----->		//check bottom
-				if(current.getRowLocation()!= m.getMazeArr().length-1 && stop == false) {
+				if(current.getRowLocation()!= m.getMazeArr().length-1) {
 					if(m.getMazeArr()[current.getRowLocation()+1][current.getColLocation()] == ' ') {
 						System.out.println("	bottom");
 						Location k = new Location(current.getRowLocation()+1, current.getColLocation());
@@ -254,7 +255,7 @@ public class LocationQueue {
 				
 				
 				//check left
-				if(current.getColLocation()!= 0 && stop == false) {
+				if(current.getColLocation()!= 0) {
 					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()-1] == ' ') {
 						System.out.println("	left");
 						Location k = new Location(current.getRowLocation(), current.getColLocation()-1);
@@ -264,6 +265,7 @@ public class LocationQueue {
 						//deleteFirst();
 					}
 				}
+				
 				
 				current = current.getNext();
 				//current = current.getNext();

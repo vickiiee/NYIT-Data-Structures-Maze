@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Maze {
@@ -26,9 +27,12 @@ public class Maze {
 
 		// testing
 		maze.getQueue().displayQueue();
+		
+		//maze.findVertex();
+		
 		maze.printRoute();
-		maze.getQueue().findRouteRecursion(queue.getFirst());
-		//maze.getQueue().findRouteQ(queue.getFirst());
+		//maze.getQueue().findRouteRecursion(queue.getFirst());
+		maze.getQueue().findRouteQ(queue.getFirst());
 		maze.printArray();
 		maze.printRoute();
 		maze.getQueue().displayQueue();
@@ -155,12 +159,66 @@ public class Maze {
 	}
 	
 	public void findRoute() {//bfs
-		findVertex();
+		//findVertex();
 	}
 
-	public void findVertex() {
+	/*public void findVertex() {
+		ArrayList<Location> vertex = new ArrayList(); // possiblt boolean
+		// findLocs
+		for (int i = 0; i < mazeArr.length; i++) {
+			for (int j = 0; j < mazeArr[i].length; j++) {
+
+				if (mazeArr[i][j] == ' ') {
+					Location v = new Location(i, j);
+					// System.out.println(mazeArr[i][j]);
+
+					// check if it is a vertex if it has at right&top, right&bottom, left&top,left&bottom.
+					
+					// check top
+					if (i != 0) {
+						if (mazeArr[i - 1][j] == ' ') {
+							System.out.println("	top");
+							v.setTop(true);
+						}
+					}
+
+					// check right
+					if (j != mazeArr[0].length - 1) {
+						if (mazeArr[i][j + 1] == ' ') {
+							System.out.println("	right");
+							v.setRight(true);
+						}
+					}
+
+					// -----> //check bottom
+					if (i != mazeArr.length - 1) {
+						if (mazeArr[i + 1][j] == ' ') {
+							System.out.println("	bottom");
+							v.setBottom(true);
+						}
+					}
+
+					// check left
+					if (j != 0) {
+						if (mazeArr[i][j - 1] == ' ') {
+							System.out.println("	left");
+							v.setLeft(true);
+						}
+					}
+					
+					if(v.isRight() == true && v.isBottom() == true || v.isRight() == true && v.isTop() == true || v.isLeft() == true && v.isBottom() == true || v.isLeft() ==true&& v.isTop() == true) {
+						vertex.add(v);
+					}
+				}
+			}
+		}
 		
-	}
+		for(int i = 0; i < vertex.size(); i++) {
+			System.out.print("Vertex @: "); 
+			vertex.get(i).getCoordinates();
+			System.out.println("");
+		}
+	}*/
 
 	public char[][] getMazeArr() {
 		return mazeArr;
