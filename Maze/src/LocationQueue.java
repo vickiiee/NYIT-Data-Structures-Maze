@@ -19,6 +19,8 @@ public class LocationQueue {
 			data.setPrevious(last);
 		}
 		last = data;
+		
+		System.out.println("INSERTLAST");
 		/*
 		 * 
 		Link newLink = new Link(dd); // make new link
@@ -32,6 +34,10 @@ public class LocationQueue {
 		 */
 	}
 
+	public Location getFirst() {
+		return first;
+	}
+
 	public void deleteFirst() { //delete first
 		if(first!=null) {
 			if(first.getNext() ==null) {
@@ -40,7 +46,7 @@ public class LocationQueue {
 				first = first.getNext();
 				first.setPrevious(null);
 			}
-			
+			System.out.println("deletefirst ");
 		}
 	}
 
@@ -56,7 +62,7 @@ public class LocationQueue {
 		return first == null; 
 	}
 	
-	public void findRoute() {//int endRow, int endCol, char[][] mazeArr
+	/**public void findRoute() {//int endRow, int endCol, char[][] mazeArr
 		//RECURSION; no while loop just dequeue and make parameter the location class
 		Location current = first;
 		while(current != null) {
@@ -110,6 +116,73 @@ public class LocationQueue {
 			}
 			
 		}
+	}**/
+	
+	public String findRouteRecursion(Location current) {//int endRow, int endCol, char[][] mazeArr
+		//-RECURSION; no while loop just dequeue and make parameter the  location class
+		//Location current = first;
+		//while(current != null) {
+			//-if current location/coordinate is end, you found the end
+			System.out.println("Current location: "+ current.getRowLocation()+","+current.getColLocation());
+			m.getMazeArr()[current.getRowLocation()][current.getColLocation()] = '.';
+			//deleteFirst();
+			if(current.getRowLocation() == m.getEndRow() && current.getColLocation() == m.getEndCol()) {
+				return "You did it! You found the end!";
+			}else {
+				//add possible next coordinates from current
+				
+				//check top
+				if(current.getRowLocation()!= 0) {
+					if(m.getMazeArr()[current.getRowLocation()-1][current.getColLocation()] == ' ') {
+						System.out.println("	top");
+						Location k =new Location(current.getRowLocation()-1, current.getColLocation());
+						insertLast(k);
+						findRouteRecursion(k);
+						//deleteFirst();
+						//delete first?
+						//method with ^location as parameter and make possibly 2 booleans: visted and in queue so no repeated location classes in it... mayb not need this bcuz visited space will already b marked with '.'
+					}
+				}
+//check left
+				if(current.getColLocation()!= 0) {
+					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()-1] == ' ') {
+						System.out.println("	left");
+						Location k = new Location(current.getRowLocation(), current.getColLocation()-1);
+						insertLast(k);
+						findRouteRecursion(k);
+						//deleteFirst();
+					}
+				}
+//----->		//check bottom
+				if(current.getRowLocation()!= m.getMazeArr().length-1) {
+					if(m.getMazeArr()[current.getRowLocation()+1][current.getColLocation()] == ' ') {
+						System.out.println("	bottom");
+						Location k = new Location(current.getRowLocation()+1, current.getColLocation());
+						insertLast(k);
+						findRouteRecursion(k);
+						//deleteFirst();
+					}
+				}
+				
+				
+				
+				//check right
+				if(current.getColLocation()!= m.getMazeArr()[0].length-1) {
+					if(m.getMazeArr()[current.getRowLocation()][current.getColLocation()+1] == ' ') {
+						System.out.println("	right");
+						Location k =new Location(current.getRowLocation(), current.getColLocation()+1);
+						insertLast(k);
+						findRouteRecursion(k);
+						//deleteFirst();
+					}
+				}
+				
+				deleteFirst();
+				//current = current.getNext();
+			}
+			
+		
+		return "nononoonono";
 	}
 	
 	public void getMazeClass(Maze maze) {

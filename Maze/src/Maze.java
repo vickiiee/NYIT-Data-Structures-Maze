@@ -26,6 +26,7 @@ public class Maze {
 
 		// testing
 		maze.getQueue().displayQueue();
+		maze.findRoute();
 		maze.getQueue().findRouteRecursion(queue.getFirst());
 		maze.printArray();
 		maze.findRoute();
