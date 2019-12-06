@@ -196,6 +196,10 @@ public class Maze {
 				for (int i = 0; i < cols; i++) {
 					//for every char in line place it into respective place in 2darray
 					mazeArr[row][i] = line.charAt(i);
+					//all ' ' in mazeArr is a possible path from start to finish; mark it as true in the corresponding places in visit[][]
+					if(line.charAt(i) == ' ') {
+						visit[row][i] = true;
+					}
 				}
 				// Display the line read.
 				System.out.println(line + " f");
@@ -204,21 +208,16 @@ public class Maze {
 			}
 			inputFile.close();
 			printArray();
-
-			//all ' ' in mazeArr is a possible path from start to finish; mark it as true in the corresponding places in visit[][]
-			for (int i = 0; i < mazeArr.length; i++) {
-				for (int j = 0; j < mazeArr[0].length; j++) {
-					if (mazeArr[i][j] == ' ') {
-						visit[i][j] = true;
-					}
-				}
-			}
-
+			
 			//Testing: prints out boolean[][] 
 			System.out.println("\n");
 			for (int i = 0; i < visit.length; i++) {
 				for (int j = 0; j < visit[0].length; j++) {
-					System.out.print(visit[i][j]);
+					if(visit[i][j] == true) {
+						System.out.print(visit[i][j]+ " |");
+					}else {
+						System.out.print(visit[i][j] +"|");
+					}
 				}
 				System.out.println("");
 			}
