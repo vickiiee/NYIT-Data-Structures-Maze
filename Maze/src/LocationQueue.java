@@ -25,7 +25,7 @@ public class LocationQueue {
 		}
 		last = data;
 
-		//System.out.println("	INSERTLAST");
+		// System.out.println(" INSERTLAST");
 	}
 
 	public Location getFirst() {
@@ -34,14 +34,10 @@ public class LocationQueue {
 
 	public Location deleteFirst() { // delete first
 		/*
-		 * Link temp = first;
-      if(first.next == null)         // if only one item
-         last = null;                // null <-- last
-      else
-         first.next.previous = null; // null <-- old next
-      first = first.next;            // first --> old next
-      return temp;
-
+		 * Link temp = first; if(first.next == null) // if only one item last = null; //
+		 * null <-- last else first.next.previous = null; // null <-- old next first =
+		 * first.next; // first --> old next return temp;
+		 * 
 		 */
 		if (first != null) {
 			Location temp = first;
@@ -53,7 +49,8 @@ public class LocationQueue {
 			first = first.getNext();
 			System.out.println("deletefirst ");
 			return temp;
-		}else {System.out.println("No items to delete");
+		} else {
+			System.out.println("No items to delete");
 			return null;
 		}
 	}
@@ -61,7 +58,9 @@ public class LocationQueue {
 	public void displayQueue() {
 		Location current = first;
 		while (current != null) {
-			System.out.println("( " + current.getRowLocation() + "," + current.getColLocation() + ") . " + m.getVisit()[current.getRowLocation()][current.getColLocation()] + "|" + m.getMazeArr()[current.getRowLocation()][current.getColLocation()]);
+			System.out.println("( " + current.getRowLocation() + "," + current.getColLocation() + ") . "
+					+ m.getVisit()[current.getRowLocation()][current.getColLocation()] + "|"
+					+ m.getMazeArr()[current.getRowLocation()][current.getColLocation()]);
 			current = current.getNext();
 		}
 	}
@@ -69,7 +68,6 @@ public class LocationQueue {
 	public boolean isEmpty() {
 		return first == null;
 	}
-
 
 	public String findRouteRecursion(Location current) {// int endRow, int endCol, char[][] mazeArr
 		System.out.println("-----------------------RECURSION--------------------------");
@@ -146,8 +144,6 @@ public class LocationQueue {
 		return "nononoonono";
 	}
 
-	
-	
 	public void getMazeClass(Maze maze) {
 		m = maze;
 	}
