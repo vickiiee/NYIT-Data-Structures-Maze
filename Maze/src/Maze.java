@@ -256,7 +256,7 @@ public class Maze {
 				}
 
 				current = current.getNext();
-				//queue.deleteFirst();
+				queue.deleteFirst();
 			}
 		}
 	}
