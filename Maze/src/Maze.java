@@ -289,12 +289,18 @@ public class Maze {
 		System.out.println("-----------------------BREADTH FIRST SEARCH... KINDA--------------------------");
 		// -RECURSION; no while loop just dequeue and make parameter the location class
 		// Location current = first;
+		
+		int counter = 0; 
 		while (current != null) {
-	
+			System.out.println("\nCOUNTER: "+ counter);
+			System.out.println("Current visited? "+ visit[current.getRowLocation()][current.getColLocation()]);
 			// -if current location/coordinate is end, you found the end
 			System.out.println("Current location: " + current.getRowLocation() + "," + current.getColLocation()
 					+ "\n endrow: " + endRow + ", end col:" + endCol);
+		if(visit[current.getRowLocation()][current.getColLocation()] == true) {
+			
 			mazeArr[current.getRowLocation()][current.getColLocation()] = '.';
+			visit[current.getRowLocation()][current.getColLocation()] = false;
 			// deleteFirst();
 			if (current.getRowLocation() == endRow && current.getColLocation() == endCol) {
 				System.out.println(
@@ -309,14 +315,14 @@ public class Maze {
 				if (current.getRowLocation() != 0) {
 					if (mazeArr[current.getRowLocation() - 1][current.getColLocation()] == ' ') {
 						System.out.println("	top");
+						//if(visit[current.getRowLocation() - 1][current.getColLocation()] == true) {
 						Location k = new Location(current.getRowLocation() - 1, current.getColLocation());
 						queue.insertLast(k);
+						counter++;
+						//}
 						// findRouteQ(k);
 						// current = current.getNext();
 						// break;
-						// method with ^location as parameter and make possibly 2 booleans: visted and
-						// in queue so no repeated location classes in it... mayb not need this bcuz
-						// visited space will already b marked with '.'
 					}
 				}
 
@@ -326,6 +332,7 @@ public class Maze {
 						System.out.println("	right");
 						Location k = new Location(current.getRowLocation(), current.getColLocation() + 1);
 						queue.insertLast(k);
+						counter++;
 						// current = current.getNext();
 						// break;
 						// deleteFirst();
@@ -338,6 +345,7 @@ public class Maze {
 						System.out.println("	bottom");
 						Location k = new Location(current.getRowLocation() + 1, current.getColLocation());
 						queue.insertLast(k);
+						counter++;
 						// current = current.getNext();
 						// break;
 						// deleteFirst();
@@ -350,6 +358,7 @@ public class Maze {
 						System.out.println("	left");
 						Location k = new Location(current.getRowLocation(), current.getColLocation() - 1);
 						queue.insertLast(k);
+						counter++;
 						// current = current.getNext();
 						// break;
 						// deleteFirst();
@@ -360,7 +369,10 @@ public class Maze {
 				// current = current.getNext();
 				// deleteFirst();
 			}
-		}
+		}else {
+			System.out.println("ELSE");
+			current = current.getNext();
+		}}
 		return "no";
 
 	}
