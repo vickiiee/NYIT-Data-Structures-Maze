@@ -35,16 +35,17 @@ public class Maze {
 		Maze maze = new Maze();
 		maze.getQueue().getMazeClass(maze);
 		maze.readFile();
-
+		maze.printArray();
+		
 		// testing
 		maze.getQueue().displayQueue();
 
-		maze.printRoute();
+		maze.printAvilablePath();
 		// maze.getQueue().findRouteRecursion(maze.getQueue().getFirst());
 		maze.findRouteQ(maze.getQueue().getFirst());
 		// maze.findRouteLinkList(maze.getQueue().getFirst());
 		maze.printArray();
-		maze.printRoute();
+		maze.printAvilablePath();
 		maze.getQueue().displayQueue();
 	}
 
@@ -209,7 +210,6 @@ public class Maze {
 				row++;
 			}
 			inputFile.close();
-			printArray();
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			readFile();
@@ -239,13 +239,13 @@ public class Maze {
 			}
 			System.out.println("");
 		}
-
 	}
 
-	public void printRoute() { 
+	public void printAvilablePath() { 
 		// testing
 		for (int i = 0; i < mazeArr.length; i++) {
 			for (int j = 0; j < mazeArr[0].length; j++) {
+				//unvisited
 				if (mazeArr[i][j] == ' ') {
 					if (i < 10) {
 						System.out.print("(" + i + " ,");
@@ -254,7 +254,6 @@ public class Maze {
 						} else {
 							System.out.print(j + ")");
 						}
-
 					} else {
 						System.out.print("(" + i + ",");
 						if (j < 10) {
@@ -263,7 +262,7 @@ public class Maze {
 							System.out.print(j + ")");
 						}
 					}
-
+					//visited
 				} else if (mazeArr[i][j] == '.') {
 					System.out.print("(.....)");
 				} else {
