@@ -181,6 +181,7 @@ public class Maze {
 			endRow = inputFile.nextInt();
 			endCol = inputFile.nextInt();
 
+			//add entrance into queue
 			Location start = new Location(startRow, startCol);
 			queue.insertLast(start);
 
@@ -194,8 +195,10 @@ public class Maze {
 			while (inputFile.hasNextLine()) {
 				String line = inputFile.nextLine();
 				for (int i = 0; i < cols; i++) {
+					
 					//for every char in line place it into respective place in 2darray
 					mazeArr[row][i] = line.charAt(i);
+					
 					//all ' ' in mazeArr is a possible path from start to finish; mark it as true in the corresponding places in visit[][]
 					if(line.charAt(i) == ' ') {
 						visit[row][i] = true;
@@ -204,23 +207,9 @@ public class Maze {
 				// Display the line read.
 				System.out.println(line + " f");
 				row++;
-
 			}
 			inputFile.close();
 			printArray();
-			
-			//Testing: prints out boolean[][] 
-			System.out.println("\n");
-			for (int i = 0; i < visit.length; i++) {
-				for (int j = 0; j < visit[0].length; j++) {
-					if(visit[i][j] == true) {
-						System.out.print(visit[i][j]+ " |");
-					}else {
-						System.out.print(visit[i][j] +"|");
-					}
-				}
-				System.out.println("");
-			}
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			readFile();
@@ -228,8 +217,8 @@ public class Maze {
 
 	}
 
-	public void printArray() {
-		// print out 2dArr
+	public void printArray() { //Testing
+		// print out maze
 		System.out.println("\n");
 		for (int i = 0; i < mazeArr.length; i++) {
 			for (int j = 0; j < mazeArr[0].length; j++) {
@@ -238,18 +227,22 @@ public class Maze {
 			System.out.println("");
 		}
 
-		//
+		//Testing: prints out visit boolean[][] 
 		System.out.println("\n");
 		for (int i = 0; i < visit.length; i++) {
 			for (int j = 0; j < visit[0].length; j++) {
-				System.out.print(visit[i][j]);
+				if(visit[i][j] == true) {
+					System.out.print(visit[i][j]+ "  |");
+				}else {
+					System.out.print(visit[i][j] +" |");
+				}
 			}
 			System.out.println("");
 		}
 
 	}
 
-	public void printRoute() {
+	public void printRoute() { 
 		// testing
 		for (int i = 0; i < mazeArr.length; i++) {
 			for (int j = 0; j < mazeArr[0].length; j++) {
