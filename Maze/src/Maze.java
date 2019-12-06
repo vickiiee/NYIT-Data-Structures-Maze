@@ -173,6 +173,7 @@ public class Maze {
 		try {
 			inputFile = new Scanner(file);
 
+			
 			int rows = inputFile.nextInt();
 			int cols = inputFile.nextInt();
 			int startRow = inputFile.nextInt();
@@ -187,20 +188,13 @@ public class Maze {
 			mazeArr = new char[rows][cols];
 			visit = new boolean[rows][cols];
 
-			System.out.println("\n");
-			for (int i = 0; i < visit.length; i++) {
-				for (int j = 0; j < visit[0].length; j++) {
-					System.out.print(visit[i][j]);
-				}
-				System.out.println("");
-			}
-
 			// Read lines from the file until no more are left.
-			int row = 0;
 			inputFile.nextLine();
+			int row = 0;
 			while (inputFile.hasNextLine()) {
 				String line = inputFile.nextLine();
 				for (int i = 0; i < cols; i++) {
+					//for every char in line place it into respective place in 2darray
 					mazeArr[row][i] = line.charAt(i);
 				}
 				// Display the line read.
@@ -211,17 +205,16 @@ public class Maze {
 			inputFile.close();
 			printArray();
 
-			// ---------------------------------------------------------
-			System.out.println("\n");
+			//all ' ' in mazeArr is a possible path from start to finish; mark it as true in the corresponding places in visit[][]
 			for (int i = 0; i < mazeArr.length; i++) {
 				for (int j = 0; j < mazeArr[0].length; j++) {
 					if (mazeArr[i][j] == ' ') {
 						visit[i][j] = true;
 					}
 				}
-				System.out.println("");
 			}
 
+			//Testing: prints out boolean[][] 
 			System.out.println("\n");
 			for (int i = 0; i < visit.length; i++) {
 				for (int j = 0; j < visit[0].length; j++) {
@@ -229,8 +222,6 @@ public class Maze {
 				}
 				System.out.println("");
 			}
-
-			// --------
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found.");
 			readFile();
