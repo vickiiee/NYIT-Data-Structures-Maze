@@ -25,7 +25,7 @@ public class LocationQueue {
 		}
 		last = data;
 
-		System.out.println("INSERTLAST");
+		//System.out.println("	INSERTLAST");
 	}
 
 	public Location getFirst() {
