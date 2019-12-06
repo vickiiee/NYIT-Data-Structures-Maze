@@ -176,98 +176,88 @@ public class Maze {
 			
 			System.out.println("	Current location: (" + current.getRowLocation() + "," + current.getColLocation() + ")");
 
-			//visited
+			/**coordinate has been visited**/
 			mazeArr[current.getRowLocation()][current.getColLocation()] = '.';
 			
-			// -if current location/coordinate is end, you found the end
+			/**if current location/coordinate is end, you found the end**/
 			if (current.getRowLocation() == endRow && current.getColLocation() == endCol) {
 				System.out.println("--------------------------------You did it! You found the end!--------------------------------------------------");
-				 break;
+				break;
 			} else {
 				// add possible next coordinates from current
 
 				// check top
 				if (current.getRowLocation() != 0) {
+					/**if coordinate has not been visited and it has not been reached before:**/
 					if (mazeArr[current.getRowLocation() - 1][current.getColLocation()] == ' '
 							&& visit[current.getRowLocation() - 1][current.getColLocation()] == true) {
 						System.out.println("	top");
 						
-						visit[current.getRowLocation() - 1][current.getColLocation()] = false;
+						/**coordinate has been reached; make it false**/
+						visit[current.getRowLocation() - 1][current.getColLocation()] = false; 
+						
 						Location k = new Location(current.getRowLocation() - 1, current.getColLocation());
 						queue.insertLast(k);
 						System.out.println("		increased counter: " + counter);
-						System.out
-								.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
+						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
 						counter++;
-						// }
-						// findRouteQ(k);
-						// current = current.getNext();
-						// break;
 					}
 				}
 
 				// check right
 				if (current.getColLocation() != mazeArr[0].length - 1) {
+					/**if coordinate has not been visited and it has not been reached before:**/
 					if (mazeArr[current.getRowLocation()][current.getColLocation() + 1] == ' '
 							&& visit[current.getRowLocation()][current.getColLocation() + 1] == true) {
 						System.out.println("	right");
+						
+						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation()][current.getColLocation() + 1] = false;
 						Location k = new Location(current.getRowLocation(), current.getColLocation() + 1);
 						queue.insertLast(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
-						System.out
-								.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
-						// current = current.getNext();
-						// break;
-						// deleteFirst();
+						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");	
 					}
 				}
-
-//----->		//check bottom
+				
+				//check bottom
 				if (current.getRowLocation() != mazeArr.length - 1) {
+					/**if coordinate has not been visited and it has not been reached before:**/
 					if (mazeArr[current.getRowLocation() + 1][current.getColLocation()] == ' '
 							&& visit[current.getRowLocation() + 1][current.getColLocation()] == true) {
 						System.out.println("	bottom");
+						
+						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation() + 1][current.getColLocation()] = false;
 						Location k = new Location(current.getRowLocation() + 1, current.getColLocation());
 						queue.insertLast(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
-						System.out
-								.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
-						// current = current.getNext();
-						// break;
-						// deleteFirst();
+						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
 					}
 				}
 
 				// check left
 				if (current.getColLocation() != 0) {
+					/**if coordinate has not been visited and it has not been reached before:**/
 					if (mazeArr[current.getRowLocation()][current.getColLocation() - 1] == ' '
 							&& visit[current.getRowLocation()][current.getColLocation() - 1] == true) {
 						System.out.println("	left");
+						
+						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation()][current.getColLocation() - 1] = false;
 						Location k = new Location(current.getRowLocation(), current.getColLocation() - 1);
 						queue.insertLast(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
-						System.out
-								.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
-						// current = current.getNext();
-						// break;
-						// deleteFirst();
+						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
 					}
 				}
 
 				current = current.getNext();
-				// current = current.getNext();
 				//queue.deleteFirst();
 			}
-//	} else {
-//				System.out.println("ELSE");
-//				current = current.getNext();
-//			}
 		}
 	}
 	
