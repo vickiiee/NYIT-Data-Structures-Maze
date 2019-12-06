@@ -40,12 +40,12 @@ public class Maze {
 		// testing
 		maze.getQueue().displayQueue();
 
-		maze.printAvilablePath();
+		maze.printPath();
 		// maze.getQueue().findRouteRecursion(maze.getQueue().getFirst());
 		maze.findRouteQ(maze.getQueue().getFirst());
 		// maze.findRouteLinkList(maze.getQueue().getFirst());
 		maze.printArray();
-		maze.printAvilablePath();
+		maze.printPath();
 		maze.getQueue().displayQueue();
 	}
 
@@ -241,7 +241,7 @@ public class Maze {
 		}
 	}
 
-	public void printAvilablePath() { 
+	public void printPath() { 
 		// testing
 		for (int i = 0; i < mazeArr.length; i++) {
 			for (int j = 0; j < mazeArr[0].length; j++) {
