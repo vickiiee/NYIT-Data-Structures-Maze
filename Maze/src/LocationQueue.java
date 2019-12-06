@@ -32,7 +32,7 @@ public class LocationQueue {
 		return first;
 	}
 
-	public void deleteFirst() { // delete first
+	public Location deleteFirst() { // delete first
 		/*
 		 * Link temp = first;
       if(first.next == null)         // if only one item
@@ -44,6 +44,7 @@ public class LocationQueue {
 
 		 */
 		if (first != null) {
+			Location temp = first;
 			if (first.getNext() == null) {
 				last = null;
 			} else {
@@ -51,6 +52,9 @@ public class LocationQueue {
 			}
 			first = first.getNext();
 			System.out.println("deletefirst ");
+			return temp;
+		}else {System.out.println("No items to delete");
+			return null;
 		}
 	}
 
