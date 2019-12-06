@@ -43,9 +43,9 @@ public class Maze {
 		maze.getQueue().displayQueue();
 
 		maze.printPath();
-		 maze.findRouteRecursion(maze.getQueue().getFirst());
+		// maze.findRouteRecursion(maze.getQueue().getFirst());
 	//	maze.findRouteQ(maze.getQueue().getFirst());
-		// maze.findRouteLinkList(maze.getQueue().getFirst());
+		 maze.findRouteLinkList(maze.getQueue().getFirst());
 		maze.printArray();
 		maze.printPath();
 		maze.getQueue().displayQueue();
@@ -57,7 +57,7 @@ public class Maze {
 			Location current = queue.deleteFirst();
 
 			System.out.println("\nCOUNTER: " + counter);
-			System.out.println("	Possible Path? " + visit[current.getRowLocation()][current.getColLocation()]);
+			System.out.println("	reached = false: " + visit[current.getRowLocation()][current.getColLocation()]);
 			// -if current location/coordinate is end, you found the end
 			System.out
 					.println("	Current location: (" + current.getRowLocation() + "," + current.getColLocation() + ")");// \n
@@ -167,39 +167,22 @@ public class Maze {
 		return "nono";
 	}
 
-	public String findRouteLinkList(Location current) {// more like linked list than queue
-		System.out.println("-----------------------BREADTH FIRST SEARCH... KINDA--------------------------");
-		// -RECURSION; no while loop just dequeue and make parameter the location class
-		// Location current = first;
-
+	public void findRouteLinkList(Location current) {
+		//breadth first search
 		int counter = 0;
 		while (current != null) {
 			System.out.println("\nCOUNTER: " + counter);
-			System.out.println("	Possible Path? " + visit[current.getRowLocation()][current.getColLocation()]);
-			// -if current location/coordinate is end, you found the end
-			System.out
-					.println("	Current location: (" + current.getRowLocation() + "," + current.getColLocation() + ")");// \n
-																														// endrow:
-																														// "
-																														// +
-																														// endRow
-																														// +
-																														// ",
-																														// end
-																														// col:"
-																														// +
-																														// endCol);
-//if (visit[current.getRowLocation()][current.getColLocation()] == true) {
+			System.out.println("	reached = false: " + visit[current.getRowLocation()][current.getColLocation()]);
+			
+			System.out.println("	Current location: (" + current.getRowLocation() + "," + current.getColLocation() + ")");
 
+			//visited
 			mazeArr[current.getRowLocation()][current.getColLocation()] = '.';
-//visit[current.getRowLocation()][current.getColLocation()] = false;
-			// deleteFirst();
+			
+			// -if current location/coordinate is end, you found the end
 			if (current.getRowLocation() == endRow && current.getColLocation() == endCol) {
-				System.out.println(
-						"--------------------------------You did it! You found the end!--------------------------------------------------");
-				// stop = true; //recursion only
-				// break;
-				return "You did it! You found the end!";
+				System.out.println("--------------------------------You did it! You found the end!--------------------------------------------------");
+				 break;
 			} else {
 				// add possible next coordinates from current
 
@@ -208,7 +191,7 @@ public class Maze {
 					if (mazeArr[current.getRowLocation() - 1][current.getColLocation()] == ' '
 							&& visit[current.getRowLocation() - 1][current.getColLocation()] == true) {
 						System.out.println("	top");
-//bottom commented out							
+						
 						visit[current.getRowLocation() - 1][current.getColLocation()] = false;
 						Location k = new Location(current.getRowLocation() - 1, current.getColLocation());
 						queue.insertLast(k);
@@ -279,15 +262,13 @@ public class Maze {
 
 				current = current.getNext();
 				// current = current.getNext();
-				queue.deleteFirst();
+				//queue.deleteFirst();
 			}
 //	} else {
 //				System.out.println("ELSE");
 //				current = current.getNext();
 //			}
 		}
-		return "no";
-
 	}
 	
 	public void findRouteRecursion(Location current) {
