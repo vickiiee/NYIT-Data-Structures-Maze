@@ -7,14 +7,10 @@ public class Location {
 
 	private Location next;
 	private Location previous;
-
-	private boolean visit;
-
+	
 	public Location(int row, int col) {
 		this.rowLocation = row;
 		this.colLocation = col;
-
-		visit = false;
 	}
 
 	int getRowLocation() {
@@ -47,14 +43,6 @@ public class Location {
 
 	public void getCoordinates() {
 		System.out.print("(" + rowLocation + "," + colLocation + ")");
-	}
-
-	public boolean isVisit() {
-		return visit;
-	}
-
-	public void setVisit(boolean visit) {
-		this.visit = visit;
 	}
 
 }
