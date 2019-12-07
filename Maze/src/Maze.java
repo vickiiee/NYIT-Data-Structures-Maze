@@ -7,13 +7,11 @@ import java.util.Scanner;
 
 public class Maze {
 	private boolean[][] visit;
-	private boolean stop;
 	
 	private char[][] mazeArr;
 
 	private int endRow;
 	private int endCol;
-	private int loop;
 
 	private LocationQueue queue;
 
@@ -29,8 +27,6 @@ public class Maze {
 	public Maze() {
 		queue = new LocationQueue();
 		asker = new Scanner(System.in);
-		stop = false;
-		loop = -1;
 	}
 
 	public static void main(String[] args) {
@@ -246,78 +242,6 @@ public class Maze {
 			}
 		}
 	}
-	
-	
-	public void findRouteRecursion(Location current) {  
-		/**Depth first search**/
-		/**RECURSION; no while loop or queue;just make parameter the location class, doesnt need visit[][] booleans**/
-		loop++;
-		int temp = loop;
-		String tab = "";
-		while(temp>0 ) {
-			tab+="	";
-			temp --;
-		}
-		
-		//TESTING
-		//System.out.println("\n"+tab+"Current location: " + current.getRowLocation() + "," + current.getColLocation());//+ "\n		exit:" + endRow + "," + endCol
-		
-		/**visited**/
-		mazeArr[current.getRowLocation()][current.getColLocation()] = '.';
-
-		if (current.getRowLocation() ==endRow && current.getColLocation() == endCol) {
-			//System.out.println("--------------------------------You did it! You found the end!--------------------------------------------------");
-			stop = true;
-		} else {
-			/**add possible next coordinates from current**/
-
-			/**check top**/
-			if (current.getRowLocation() != 0 && stop == false) {
-				if (mazeArr[current.getRowLocation() - 1][current.getColLocation()] == ' ') {
-					//System.out.println(tab + "top of "+current.getRowLocation() + "," + current.getColLocation());
-					
-					Location k = new Location(current.getRowLocation() - 1, current.getColLocation());
-					//System.out.println(tab +"Next: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
-					findRouteRecursion(k);
-				}
-			}
-
-			/**check right**/
-			if (current.getColLocation() != mazeArr[0].length - 1 && stop == false) {
-				if (mazeArr[current.getRowLocation()][current.getColLocation() + 1] == ' ') {
-					//System.out.println(tab + "right of "+current.getRowLocation() + "," + current.getColLocation());
-					
-					Location k = new Location(current.getRowLocation(), current.getColLocation() + 1);
-					//System.out.println(tab + "Next: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
-					findRouteRecursion(k);
-				}
-			}
-
-			/**check bottom**/
-			if (current.getRowLocation() != mazeArr.length - 1 && stop == false) {
-				if (mazeArr[current.getRowLocation() + 1][current.getColLocation()] == ' ') {
-					//System.out.println(tab + "bottom of "+current.getRowLocation() + "," + current.getColLocation());
-					
-					Location k = new Location(current.getRowLocation() + 1, current.getColLocation());
-					//System.out.println(tab + "Next: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
-					findRouteRecursion(k);
-				}
-			}
-
-			/**check left**/
-			if (current.getColLocation() != 0 && stop == false) {
-				if (mazeArr[current.getRowLocation()][current.getColLocation() - 1] == ' ') {
-					//System.out.println(tab+"left of " +current.getRowLocation() + "," + current.getColLocation());
-					
-					Location k = new Location(current.getRowLocation(), current.getColLocation() - 1);
-					//System.out.println(tab + "Next: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
-					findRouteRecursion(k);
-				}
-			}
-			loop--;
-			//System.out.println(tab+"------------reached-the-end-of-" + current.getRowLocation() + "," + current.getColLocation()+"----------------------");
-		}
-	}	
 	
 	
 	public void readFile() { 
