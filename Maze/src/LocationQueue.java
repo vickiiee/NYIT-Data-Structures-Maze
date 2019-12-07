@@ -49,9 +49,7 @@ public class LocationQueue {
 		Location current = first;
 		while (current != null) {
 			// getCoordinates();
-			System.out.println("( " + current.getRowLocation() + "," + current.getColLocation() + ") . "
-					+ m.getVisit()[current.getRowLocation()][current.getColLocation()] + "|"
-					+ m.getMazeArr()[current.getRowLocation()][current.getColLocation()]);
+			System.out.println("( " + current.getRowLocation() + "," + current.getColLocation() + ")"); //+ m.getVisit()[current.getRowLocation()][current.getColLocation()] + "|" + m.getMazeArr()[current.getRowLocation()][current.getColLocation()]); 
 			current = current.getNext();
 		}
 	}
