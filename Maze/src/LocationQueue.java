@@ -8,12 +8,12 @@ public class LocationQueue {
 
 	private Maze m;
 
-	public LocationQueue() {	
+	public LocationQueue() {
 		first = null;
 		last = null;
 	}
 
-	public void insertLast(Location data) { // insert last
+	public void enqueue(Location data) { // insert last
 		if (first == null) {
 			first = data;
 		} else {
@@ -21,7 +21,6 @@ public class LocationQueue {
 			data.setPrevious(last);
 		}
 		last = data;
-
 		// System.out.println(" INSERTLAST");
 	}
 
@@ -29,13 +28,7 @@ public class LocationQueue {
 		return first;
 	}
 
-	public Location deleteFirst() { // delete first
-		/*
-		 * Link temp = first; if(first.next == null) // if only one item last = null; //
-		 * null <-- last else first.next.previous = null; // null <-- old next first =
-		 * first.next; // first --> old next return temp;
-		 * 
-		 */
+	public Location dequeue() { // delete first
 		if (first != null) {
 			Location temp = first;
 			if (first.getNext() == null) {
@@ -44,7 +37,7 @@ public class LocationQueue {
 				first.getNext().setPrevious(null);
 			}
 			first = first.getNext();
-			System.out.println("deletefirst ");
+			// System.out.println("deletefirst ");
 			return temp;
 		} else {
 			System.out.println("No items to delete");
@@ -55,7 +48,7 @@ public class LocationQueue {
 	public void displayQueue() {
 		Location current = first;
 		while (current != null) {
-			//getCoordinates();
+			// getCoordinates();
 			System.out.println("( " + current.getRowLocation() + "," + current.getColLocation() + ") . "
 					+ m.getVisit()[current.getRowLocation()][current.getColLocation()] + "|"
 					+ m.getMazeArr()[current.getRowLocation()][current.getColLocation()]);

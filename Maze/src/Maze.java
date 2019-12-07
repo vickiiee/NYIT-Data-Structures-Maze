@@ -56,7 +56,7 @@ public class Maze {
 	public void findRouteQ(Location first) { 
 		int counter = 0;
 		while (queue.isEmpty() == false) {
-			Location current = queue.deleteFirst();
+			Location current = queue.dequeue();
 
 			System.out.println("\nCOUNTER: " + counter);
 			System.out.println("	reached = false: " + visit[current.getRowLocation()][current.getColLocation()]);
@@ -83,7 +83,7 @@ public class Maze {
 						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation() - 1][current.getColLocation()] = false;
 						Location k = new Location(current.getRowLocation() - 1, current.getColLocation());
-						queue.insertLast(k);
+						queue.enqueue(k);
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
 						counter++;
@@ -101,7 +101,7 @@ public class Maze {
 						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation()][current.getColLocation() + 1] = false;
 						Location k = new Location(current.getRowLocation(), current.getColLocation() + 1);
-						queue.insertLast(k);
+						queue.enqueue(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
@@ -119,7 +119,7 @@ public class Maze {
 						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation() + 1][current.getColLocation()] = false;
 						Location k = new Location(current.getRowLocation() + 1, current.getColLocation());
-						queue.insertLast(k);
+						queue.enqueue(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
@@ -137,7 +137,7 @@ public class Maze {
 						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation()][current.getColLocation() - 1] = false;
 						Location k = new Location(current.getRowLocation(), current.getColLocation() - 1);
-						queue.insertLast(k);
+						queue.enqueue(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
@@ -178,7 +178,7 @@ public class Maze {
 						visit[current.getRowLocation() - 1][current.getColLocation()] = false; 
 						
 						Location k = new Location(current.getRowLocation() - 1, current.getColLocation());
-						queue.insertLast(k);
+						queue.enqueue(k);
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
 						counter++;
@@ -196,7 +196,7 @@ public class Maze {
 						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation()][current.getColLocation() + 1] = false;
 						Location k = new Location(current.getRowLocation(), current.getColLocation() + 1);
-						queue.insertLast(k);
+						queue.enqueue(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");	
@@ -213,7 +213,7 @@ public class Maze {
 						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation() + 1][current.getColLocation()] = false;
 						Location k = new Location(current.getRowLocation() + 1, current.getColLocation());
-						queue.insertLast(k);
+						queue.enqueue(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
@@ -230,14 +230,14 @@ public class Maze {
 						/**coordinate has been reached; make it false**/
 						visit[current.getRowLocation()][current.getColLocation() - 1] = false;
 						Location k = new Location(current.getRowLocation(), current.getColLocation() - 1);
-						queue.insertLast(k);
+						queue.enqueue(k);
 						counter++;
 						System.out.println("		increased counter: " + counter);
 						System.out.println("		Added: " + "(" + k.getRowLocation() + "," + k.getColLocation() + ")");
 					}
 				}
 				current = current.getNext();
-				queue.deleteFirst();
+				queue.dequeue();
 			}
 		}
 	}
@@ -340,7 +340,7 @@ public class Maze {
 			
 			/**add entrance into queue**/
 			Location start = new Location(startRow, startCol);
-			queue.insertLast(start);
+			queue.enqueue(start);
 			
 			/**Read lines from the file until no more are left.**/
 			inputFile.nextLine();
