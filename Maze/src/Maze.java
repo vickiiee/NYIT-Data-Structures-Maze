@@ -43,15 +43,17 @@ public class Maze {
 		maze.getQueue().displayQueue();
 
 		maze.printPath();
-		// maze.findRouteRecursion(maze.getQueue().getFirst());
-	//	maze.findRouteQ(maze.getQueue().getFirst());
-		 maze.findRouteLinkList(maze.getQueue().getFirst());
+		
+		//maze.findRouteRecursion(maze.getQueue().getFirst());
+		maze.findRouteQ(maze.getQueue().getFirst());
+		//maze.findRouteLinkList(maze.getQueue().getFirst());
+		
 		maze.printArray();
 		maze.printPath();
 		maze.getQueue().displayQueue();
 	}
 
-	public String findRouteQ(Location first) {
+	public String findRouteQ(Location first) { 
 		int counter = 0;
 		while (queue.isEmpty() == false) {
 			Location current = queue.deleteFirst();
@@ -168,6 +170,7 @@ public class Maze {
 	}
 
 	public void findRouteLinkList(Location current) {
+ 
 		//breadth first search
 		int counter = 0;
 		while (current != null) {
@@ -261,7 +264,8 @@ public class Maze {
 		}
 	}
 	
-	public void findRouteRecursion(Location current) {
+	
+	public void findRouteRecursion(Location current) {  
 		//Depth first search
 		//RECURSION; no while loop or queue;just make parameter the location class, doesnt need visit[][] booleans
 		loop++;
@@ -336,8 +340,12 @@ public class Maze {
 		System.out.println("Enter the name of the maze file:");
 		userInput = asker.next();
 
-		File file = new File("src/" + userInput + ".txt"); // finds file
-
+		File file = new File(userInput); // finds file ---> ("src/" + userInput + ".txt");
+		//src/maze2.txt
+		//src/maze3.txt
+		//src/mazetest1.txt
+		//src/mazetester2.txt
+		
 		try {
 			inputFile = new Scanner(file);
 
