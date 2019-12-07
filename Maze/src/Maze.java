@@ -51,6 +51,7 @@ public class Maze {
 	}
 
 	public void findRouteQ(Location first) { 
+		/**breadth first search**/
 		//int counter = 0;
 		while (queue.isEmpty() == false) {
 			Location current = queue.dequeue();
@@ -204,6 +205,7 @@ public class Maze {
 			readFile();
 		}
 	}
+	
 
 	public void printArray() { 
 		/**prints char array /maze**/
@@ -228,7 +230,7 @@ public class Maze {
 		}*/
 	}
 
-	public void printPath() { 
+	public void printPath() { /**TESTING**/
 		/**TESTING**/
 		for (int i = 0; i < mazeArr.length; i++) {
 			for (int j = 0; j < mazeArr[0].length; j++) {
@@ -260,7 +262,6 @@ public class Maze {
 		}
 	}
  
-
 	public char[][] getMazeArr() {
 		return mazeArr;
 	}
