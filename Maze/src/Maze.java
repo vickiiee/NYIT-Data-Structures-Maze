@@ -1,5 +1,5 @@
 //Author: Vickie Wu and Rosenaldie Beauvais
-// 12-10-19
+// 12-10-19 
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,6 +37,7 @@ public class Maze {
 		Maze maze = new Maze();
 		maze.getQueue().getMazeClass(maze);
 		maze.readFile();
+		
 		System.out.println("\nMaze in 2D Array:");
 		maze.printArray();
 		
@@ -51,6 +52,7 @@ public class Maze {
 		
 		System.out.println("\nPath in maze:");
 		maze.printArray();
+		
 		//maze.printPath();
 		//maze.getQueue().displayQueue();
 	}
